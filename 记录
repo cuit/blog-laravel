@@ -1,0 +1,11 @@
+如果要配置虚拟域名
+1,在C:\Windows\System32\drivers\etc下的hosts文件中添加
+127.0.0.1   blog.com
+2,在WAMP Server中WAMP\wamp\bin\apache\apache2.4.9\conf下的httpd文件中添加
+把 LoadModule rewrite_module modules/mod_rewrite.so前面的注释去掉
+把 Include conf/extra/httpd-vhosts.conf前面的注释去掉
+3,WAMP\wamp\bin\apache\apache2.4.9\conf\extra下的httpd-vhosts文件中添加
+<VirtualHost *:80>
+    DocumentRoot "E:/WAMP/wamp/www/blog-laravel/public"
+    ServerName blog.com
+</VirtualHost>

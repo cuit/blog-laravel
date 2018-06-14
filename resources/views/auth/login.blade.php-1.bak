@@ -1,0 +1,70 @@
+@extends('layouts.app')
+
+@section('content')
+<title>Fort.js - 表单填写进度提示效果</title>
+<link rel="stylesheet" href="{{asset('static/login/style.css')}}">
+<link rel="stylesheet" href="{{asset('static/login/fort.css')}}">
+
+<script src="{{asset('static/login/fort.js')}}"></script>
+</head>
+<body>
+<div class="form-wrapper" >
+  <div class="top"><div class="colors"></div></div>
+	<form class="form-horizontal" role="form" method="POST" action="{{ url('/login') }}">
+		{{csrf_field()}}
+		<div class="form">
+		<div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
+			<label for="email" class="col-md-3 control-label">E-Mail Address</label>
+
+			<div class="col-md-7">
+				<div class="form-item">
+					<input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}">
+				</div>
+				@if ($errors->has('email'))
+					<span class="help-block">
+						<strong>{{ $errors->first('email') }}</strong>
+					</span>
+				@endif
+			</div>
+		</div>
+		<div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
+			<label for="password" class="col-md-3 control-label">Password</label>
+
+			<div class="col-md-7">
+				<div class="form-item">
+					<input id="password" type="password" class="form-control" name="password">
+				</div>
+
+				@if ($errors->has('password'))
+					<span class="help-block">
+						<strong>{{ $errors->first('password') }}</strong>
+					</span>
+				@endif
+			</div>
+		</div>
+			<div class="form-group">
+				<div class="col-md-9">
+					<div class="checkbox">
+						<label>
+							<input type="checkbox" name="remember"> Remember Me
+						</label>
+					</div>
+				</div>
+			</div>
+		<div class="button-panel">
+        <input type="submit" class="button" title="Sign In" value="登录">
+			<a class="btn btn-link" href="{{ url('/password/reset') }}">Forgot Your Password?</a>
+      </div>
+	</div>
+	</form>
+</div>
+ <div class="footer-banner" style="width:728px; margin:200px auto 0"></div>
+<script>
+    sections();
+</script>
+@endsection
+<!--
+本代码由js代码收集并编辑整理;
+尊重他人劳动成果;
+转载请保留js代码链接 - www.jsdaima.com
+-->
